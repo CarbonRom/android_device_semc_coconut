@@ -15,13 +15,15 @@
 -include device/semc/mogami-common/BoardConfigCommon.mk
 -include vendor/semc/coconut/BoardConfigVendor.mk
 
-TARGET_SPECIFIC_HEADER_PATH += device/semc/coconut/include
+TARGET_SPECIFIC_HEADER_PATH += device/semc/coconut/include \
+
+$(shell mkdir -p out/target/product/coconut/obj/KERNEL_OBJ/usr)
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/semc/coconut/bluedroid
 
 # Kernel
-TARGET_KERNEL_CONFIG := lx_coconut_defconfig
+TARGET_KERNEL_CONFIG := nAa_coconut_defconfig
 
 # Sensors
 SOMC_CFG_SENSORS_ACCEL_BMA250_INPUT := yes
@@ -32,9 +34,6 @@ TARGET_OTA_ASSERT_DEVICE := WT19a,WT19i,coconut
 
 # Stereo speaker
 BOARD_USES_STEREO_HW_SPEAKER := true
-
-# No back mic
-BOARD_HAVE_BACK_MIC_CAMCORDER := false
 
 # CM Hardware tunables
 BOARD_HARDWARE_CLASS += device/semc/coconut/cmhw
